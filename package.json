@@ -1,0 +1,25 @@
+{
+  "name": "shortenerapi",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Hugo Vallada",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "pg": "^8.4.2",
+    "sequelize": "^6.3.5",
+    "shortid": "^2.2.16",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.6",
+    "sequelize-cli": "^6.2.0"
+  }
+}
