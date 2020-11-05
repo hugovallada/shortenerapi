@@ -1,4 +1,4 @@
 node_modules/
-.eslintrc.json
 .sequelizerc
 src/config/database.cjs
+.eslintrc.json
