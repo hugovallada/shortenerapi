@@ -25,8 +25,7 @@ export const encurtar = async (req, res) => {
         short,
       });
     }
-
-    return res.status(200).json(`${baseUrl}${shortUrl.short}`);
+    return res.status(200).send(`${baseUrl}${shortUrl.short}`);
   } catch (err) {
     console.log(err);
     return res.status(400).json('Um erro aconteceu');
