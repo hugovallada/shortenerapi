@@ -4,7 +4,7 @@ import validUrl from 'valid-url';
 
 export const encurtar = async (req, res) => {
   try {
-    const baseUrl = 'localhost:3000/';
+    const baseUrl = 'localhost:3001/';
 
     const {url} = req.body;
     console.log(url);
