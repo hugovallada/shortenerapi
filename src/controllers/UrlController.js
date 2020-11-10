@@ -59,6 +59,27 @@ export const findAll = async (req, res) => {
   }
 };
 
+export const listarUrls = async (req, res) => {
+  try {
+    const baseUrl = 'localhost:3001/';
+    const urls = await Url.findAll();
+
+    const listaUrls = [];
+
+    urls.map((url) => {
+      listaUrls.push({
+        short: `${baseUrl}${url.short}`,
+        original: url.url,
+      },
+      );
+    });
+
+    return res.status(200).json(listaUrls);
+  } catch (err) {
+    return res.status(400).json({err: 'Um erro aconteceu'});
+  }
+};
+
 export const redirecionar = async (req, res) => {
   try {
     const {short} = req.params;
