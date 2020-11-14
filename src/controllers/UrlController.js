@@ -70,6 +70,7 @@ export const listarUrls = async (req, res) => {
       listaUrls.push({
         short: `${baseUrl}${url.short}`,
         original: url.url,
+        accessed: url.accessed,
       },
       );
     });
@@ -87,6 +88,15 @@ export const redirecionar = async (req, res) => {
     const shortUrl = await Url.findOne({
       where: {short},
     });
+
+    await shortUrl.update(
+        {
+          accessed: shortUrl.accessed + 1,
+        },
+        {
+          where: {id: shortUrl.id},
+        },
+    );
 
     return res.redirect(`${shortUrl.url}`);
   } catch (err) {
