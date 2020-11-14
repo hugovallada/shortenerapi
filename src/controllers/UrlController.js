@@ -25,8 +25,7 @@ export const encurtar = async (req, res) => {
         short,
       });
     }
-
-    return res.status(200).json(`${baseUrl}${shortUrl.short}`);
+    return res.status(200).send(`${baseUrl}${shortUrl.short}`);
   } catch (err) {
     console.log(err);
     return res.status(400).json('Um erro aconteceu');
@@ -57,6 +56,27 @@ export const findAll = async (req, res) => {
     return res.status(200).json(urls);
   } catch (err) {
     return res.status(400).json({err: 'Um erro ocorreu'});
+  }
+};
+
+export const listarUrls = async (req, res) => {
+  try {
+    const baseUrl = 'localhost:3001/';
+    const urls = await Url.findAll();
+
+    const listaUrls = [];
+
+    urls.map((url) => {
+      listaUrls.push({
+        short: `${baseUrl}${url.short}`,
+        original: url.url,
+      },
+      );
+    });
+
+    return res.status(200).json(listaUrls);
+  } catch (err) {
+    return res.status(400).json({err: 'Um erro aconteceu'});
   }
 };
 
