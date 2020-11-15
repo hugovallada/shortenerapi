@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('urls', {
+    return queryInterface.createTable('urls',{
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -11,16 +11,11 @@ module.exports = {
       },
       url: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: false
       },
       short: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      accessed: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        defaultValue: 0,
+        allowNull: false
       },
       created_at: {
         type: Sequelize.DATE,
@@ -30,12 +25,12 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    },
-
-    );
+    }
+    
+    )
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('urls');
-  },
+    return queryInterface.dropTable('urls')
+  }
 };

@@ -2,8 +2,6 @@ import Url from '../models/Url.js';
 import shortid from 'shortid';
 import validUrl from 'valid-url';
 
-// TODO: Adicionar login e proteger o acesso a lsitagem total
-
 export const encurtar = async (req, res) => {
   try {
     const baseUrl = 'localhost:3001/';
@@ -34,6 +32,24 @@ export const encurtar = async (req, res) => {
   }
 };
 
+export const create = async (req, res) => {
+  try {
+    const {url} = req.body;
+
+
+    if (url.length < 10) throw new Error('tamanho inválido');
+
+    const short = `${url.slice(10)}kdc`;
+
+    const newShort = await Url.create({url, short});
+
+    return res.status(201).json(newShort);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({err: 'Um erro aconteceu'});
+  }
+};
+
 export const findAll = async (req, res) => {
   try {
     const urls = await Url.findAll();
@@ -54,7 +70,6 @@ export const listarUrls = async (req, res) => {
       listaUrls.push({
         short: `${baseUrl}${url.short}`,
         original: url.url,
-        accessed: url.accessed,
       },
       );
     });
@@ -72,15 +87,6 @@ export const redirecionar = async (req, res) => {
     const shortUrl = await Url.findOne({
       where: {short},
     });
-
-    await shortUrl.update(
-        {
-          accessed: shortUrl.accessed + 1,
-        },
-        {
-          where: {id: shortUrl.id},
-        },
-    );
 
     return res.redirect(`${shortUrl.url}`);
   } catch (err) {
