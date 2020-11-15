@@ -2,7 +2,7 @@ import Url from '../models/Url.js';
 import shortid from 'shortid';
 import validUrl from 'valid-url';
 
-// TODO: Adicionar login e proteger o acesso a lsitagem total
+// TODO: Adicionar login e proteger o acesso a listagem total
 
 export const encurtar = async (req, res) => {
   try {
