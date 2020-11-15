@@ -2,6 +2,8 @@ import Url from '../models/Url.js';
 import shortid from 'shortid';
 import validUrl from 'valid-url';
 
+// TODO: Adicionar login e proteger o acesso a lsitagem total
+
 export const encurtar = async (req, res) => {
   try {
     const baseUrl = 'localhost:3001/';
@@ -29,24 +31,6 @@ export const encurtar = async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.status(400).json('Um erro aconteceu');
-  }
-};
-
-export const create = async (req, res) => {
-  try {
-    const {url} = req.body;
-
-
-    if (url.length < 10) throw new Error('tamanho inválido');
-
-    const short = `${url.slice(10)}kdc`;
-
-    const newShort = await Url.create({url, short});
-
-    return res.status(201).json(newShort);
-  } catch (err) {
-    console.log(err);
-    return res.status(400).json({err: 'Um erro aconteceu'});
   }
 };
 
