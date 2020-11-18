@@ -1,3 +1,5 @@
 node_modules/
 src/config/database.cjs
 .eslintrc.json
+workspace.code-workspace
+express-api.code-workspace
