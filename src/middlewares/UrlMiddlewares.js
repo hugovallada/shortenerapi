@@ -4,7 +4,7 @@ import {getData} from '../utils/DataUtil.js';
 
 export const loggerMiddleware = (req, res, next) => {
   try {
-    msg = `INFO: Acesso realizado em: - ${getData()}\n`;
+    const msg = `INFO: Acesso realizado em: - ${getData()}\n`;
     console.log(path.resolve('.', 'src', 'logs', 'logs.log'));
     fs.writeFile(path.resolve('.', 'src', 'logs', 'logs.log'), msg, {flag: 'a'}, (err) => err);
     next();
