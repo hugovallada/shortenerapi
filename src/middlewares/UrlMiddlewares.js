@@ -12,8 +12,8 @@ export const loggerMiddleware = (req, res, next) => {
     console.log('Erro ao escrever o logger');
 
     const data = getData();
-    fs.writeFile(path.resolve('.', 'src', 'logs', 'error-logs.log'), `WARNING: Não foi possível escrever o log - ${data}\n`, (err) => err);
-    fs.writeFile(path.resolve('.', 'src', 'logs', 'warnings', `${data}.log`), `V: ${err}`, (err) => err);
+    fs.writeFile(path.resolve('.', 'src', 'logs', 'error-logs.log'), `WARNING: Não foi possível escrever o log - ${data}\n`, {flag: 'a'}, (err) => err);
+    fs.writeFile(path.resolve('.', 'src', 'logs', 'warnings', `${data}.log`), `V: ${err}`, {flag: 'a'}, (err) => err);
     next();
   }
 };

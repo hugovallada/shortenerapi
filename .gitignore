@@ -3,3 +3,6 @@ src/config/database.cjs
 .eslintrc.json
 workspace.code-workspace
 express-api.code-workspace
+logs.log
+errors-logs.log
+src/logs
