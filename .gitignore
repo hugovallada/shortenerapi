@@ -6,3 +6,4 @@ express-api.code-workspace
 logs.log
 errors-logs.log
 src/logs
+.env

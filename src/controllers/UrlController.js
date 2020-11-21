@@ -6,7 +6,7 @@ import validUrl from 'valid-url';
 
 export const encurtar = async (req, res) => {
   try {
-    const baseUrl = 'localhost:3001/';
+    const baseUrl = process.env.URL || 'localhost:3001/';
 
     const {url} = req.body;
     console.log(url);
@@ -45,7 +45,7 @@ export const findAll = async (req, res) => {
 
 export const listarUrls = async (req, res) => {
   try {
-    const baseUrl = 'localhost:3001/';
+    const baseUrl = process.env.URL || 'localhost:3001/';
     const urls = await Url.findAll();
 
     const listaUrls = [];
